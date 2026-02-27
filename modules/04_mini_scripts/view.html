@@ -1,0 +1,175 @@
+<div class="glass-container mini-layout">
+    
+    <div class="mini-grid-panel">
+        <div class="mini-header">
+            <h3>// CYBER_WALL_v2.0</h3>
+            <span>STATUS: 15 CRITICAL MODULES DETECTED</span>
+        </div>
+
+        <div class="constructs-grid">
+            
+            <div class="brick" onclick="window.revealBrick('linear', this)">
+                <div class="brick-content"><i class="fas fa-chart-line"></i><span>LINEAR_REG</span></div>
+            </div>
+            <div class="brick" onclick="window.revealBrick('numpy', this)">
+                <div class="brick-content"><i class="fas fa-cubes"></i><span>NUMPY_N-DIM</span></div>
+            </div>
+            <div class="brick" onclick="window.revealTrap(this)"></div> 
+            <div class="brick" onclick="window.revealBrick('timeseries', this)">
+                <div class="brick-content"><i class="fas fa-wave-square"></i><span>TIME_SERIES</span></div>
+            </div>
+            <div class="brick" onclick="window.revealBrick('salary', this)">
+                <div class="brick-content"><i class="fas fa-search-dollar"></i><span>EDA_SALARY</span></div>
+            </div>
+            
+            <div class="brick" onclick="window.revealBrick('dataentry', this)">
+                <div class="brick-content"><i class="fas fa-database"></i><span>DATA_ENTRY</span></div>
+            </div>
+            <div class="brick" onclick="window.revealBrick('twitter', this)">
+                <div class="brick-content"><i class="fab fa-twitter"></i><span>TWITTER_BOT</span></div>
+            </div>
+            <div class="brick" onclick="window.revealBrick('tinder', this)">
+                <div class="brick-content"><i class="fas fa-robot"></i><span>AUTO_SWIPE</span></div>
+            </div>
+            <div class="brick" onclick="window.revealTrap(this)"></div> 
+            <div class="brick" onclick="window.revealBrick('cookie', this)">
+                <div class="brick-content"><i class="fas fa-mouse-pointer"></i><span>ALGO_BOT</span></div>
+            </div>
+            
+            <div class="brick" onclick="window.revealTrap(this)"></div> 
+            <div class="brick" onclick="window.revealBrick('spotify', this)">
+                <div class="brick-content"><i class="fab fa-spotify"></i><span>SPOTIFY_API</span></div>
+            </div>
+            <div class="brick" onclick="window.revealBrick('flight', this)">
+                <div class="brick-content"><i class="fas fa-plane-departure"></i><span>FLIGHT_ALGO</span></div>
+            </div>
+            <div class="brick" onclick="window.revealBrick('workout', this)">
+                <div class="brick-content"><i class="fas fa-brain"></i><span>NLP_WORKOUT</span></div>
+            </div>
+            <div class="brick" onclick="window.revealTrap(this)"></div> 
+            
+            <div class="brick" onclick="window.revealBrick('stock', this)">
+                <div class="brick-content"><i class="fas fa-chart-pie"></i><span>STOCK_MON</span></div>
+            </div>
+            <div class="brick" onclick="window.revealBrick('rain', this)">
+                <div class="brick-content"><i class="fas fa-cloud-showers-heavy"></i><span>CLOUD_ALERT</span></div>
+            </div>
+            <div class="brick" onclick="window.revealBrick('iss', this)">
+                <div class="brick-content"><i class="fas fa-satellite"></i><span>GEO_TRACKER</span></div>
+            </div>
+            <div class="brick" onclick="window.revealTrap(this)"></div> 
+            <div class="brick" onclick="window.revealBrick('flash', this)">
+                <div class="brick-content"><i class="fas fa-memory"></i><span>STATE_GUI</span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mini-inspector-panel">
+        
+        <div id="inspector-placeholder" class="inspector-placeholder">
+            <i class="fas fa-terminal"></i>
+            <h3>SYSTEM LOCKED</h3>
+            <p style="color: #FF00FF; font-weight: bold; animation: blink 1.5s infinite;">
+                > AWAITING INPUT: EXTRACT PAYLOAD
+            </p>
+        </div>
+
+        <div id="inspector-trap" class="trap-message" style="display: none;">
+            <i class="fas fa-bomb"></i>
+            <h2>CORRUPTED SECTOR</h2>
+            <p>"Security trigger activated. Data purged."</p>
+        </div>
+
+        <div id="script-linear" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Linear Regression EDA</h2><span class="detail-tag">Scikit / Seaborn</span></div>
+            <div class="detail-body"><p>Applied Machine Learning. Modeled data trends utilizing linear regression algorithms and generated high-fidelity visual outputs with Seaborn.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_78%20-%20Linear%20Regression%20and%20Data%20Visualisation%20with%20Seaborn" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-numpy" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>N-Dimensional Compute</h2><span class="detail-tag">NumPy</span></div>
+            <div class="detail-body"><p>Matrix Computation. Engineered complex multi-dimensional array operations, executing performance-optimized mathematical models.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_77%20-%20Computation%20with%20NumPy%20and%20N-Dimensional%20Arrays" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-timeseries" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Time Series Processing</h2><span class="detail-tag">Pandas / Data Eng</span></div>
+            <div class="detail-body"><p>Data Pipeline. Processed, cleaned, and resampled temporal datasets to extract and visualize long-term statistical trends.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_75%20-%20Resampling%20and%20Visualising%20Time%20Series" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-salary" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Salary Data Extraction</h2><span class="detail-tag">Exploratory Data</span></div>
+            <div class="detail-body"><p>Exploratory Data Analysis (EDA). Executed granular cleaning protocols on raw datasets to surface significant correlations between majors and compensation.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_72%20-%20College%20Major%20v.s.%20Your%20Salary%20Data%20Exploration" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-dataentry" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Data Entry Pipeline</h2><span class="detail-tag">BeautifulSoup / Selenium</span></div>
+            <div class="detail-body"><p>Web Scraping Pipeline. Automated the extraction of real estate listings and injected parsed data directly into structured database forms.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_53%20-%20Data%20Entry%20Job%20Automation" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-twitter" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>ISP Monitoring Node</h2><span class="detail-tag">Selenium / Twitter API</span></div>
+            <div class="detail-body"><p>Automated Testing. Developed a headless browser script to measure network latency and autonomously broadcast diagnostics via social APIs.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_51%20-%20Internet%20Speed%20Twitter%20Complaint%20Bot" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-tinder" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>UI Interaction Agent</h2><span class="detail-tag">Selenium WebDriver</span></div>
+            <div class="detail-body"><p>DOM Automation. Programmed a persistent webdriver agent capable of handling asynchronous loading, OAuth logins, and repetitive UI interactions.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_50%20-%20Auto%20Tinder%20Swiping%20Bot" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-cookie" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Optimization Bot</h2><span class="detail-tag">Algorithmic Trading</span></div>
+            <div class="detail-body"><p>Resource Optimization. Deployed a programmatic clicker utilizing real-time DOM evaluation to calculate and execute the most efficient upgrade paths.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_48%20-%20The%20Cookie%20Clicker%20Project" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-spotify" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Temporal Playlist Engine</h2><span class="detail-tag">OAuth / REST</span></div>
+            <div class="detail-body"><p>API Architecture. Scraped historical Billboard charts and executed Spotify OAuth token flows to dynamically instantiate playlists based on date queries.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_46%20-%20Musical%20Time%20Machine" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-flight" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Flight Anomaly Alert</h2><span class="detail-tag">REST APIs / SMTP</span></div>
+            <div class="detail-body"><p>Market Monitor. Cross-referenced multiple flight data APIs to detect pricing anomalies, triggering routing protocols and SMS payload deliveries.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_39%20-%20Flight%20Deal%20Finder" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-workout" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>NLP Data Router</h2><span class="detail-tag">NLP / Google APIs</span></div>
+            <div class="detail-body"><p>Natural Language Processing. Utilized Nutritionix NLP to decode raw text inputs into structured data arrays, securely routing them to a cloud database.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_38%20-%20Workout%20Tracking%20Using%20Google%20Sheets" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-stock" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Equity Volatility Tracker</h2><span class="detail-tag">Financial APIs</span></div>
+            <div class="detail-body"><p>Algorithmic Trigger. Evaluated daily equity fluctuations via AlphaVantage; breached thresholds automatically compiled associated market news via NewsAPI.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_36%20-%20Stock%20Trading%20News%20Alert%20Project" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-rain" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Meteorological Node</h2><span class="detail-tag">JSON / Twilio</span></div>
+            <div class="detail-body"><p>Cloud Infrastructure. Leveraged OpenWeatherMap endpoints to parse JSON forecasts, deploying Twilio SMS alerts conditionally upon weather IDs.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_35%20-%20Rain%20Alert" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-iss" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Orbital Proximity Alert</h2><span class="detail-tag">Geolocation</span></div>
+            <div class="detail-body"><p>Space System API. Computed geospatial proximities between local coordinates and live ISS orbital telemetry to trigger chron-based notification systems.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_33%20-%20ISS%20Overhead%20Notifier" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+        <div id="script-flash" class="script-detail" style="display: none;">
+            <div class="detail-header"><h2>Persistent Memory App</h2><span class="detail-tag">Pandas / Tkinter</span></div>
+            <div class="detail-body"><p>State Management. Engineered a study tool GUI capable of dynamically mutating large underlying CSV datasets without blocking the main execution thread.</p></div>
+            <div class="detail-links"><a href="https://github.com/vivekbharu25/100DaysOfCode-Python/tree/main/Day_31%20-%20Flash%20Card%20App%20Capstone%20Project" target="_blank" rel="noopener noreferrer" class="pink-btn">View Repository</a></div>
+        </div>
+
+    </div>
+</div>

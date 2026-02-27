@@ -1,0 +1,178 @@
+/* MODULE 04: THE CYBER WALL (MAXIMUM WIDTH EDITION) */
+
+/* ================================================================= */
+/* 1. CONTAINER: FORCE FULL SIZE */
+/* ================================================================= */
+.mini-layout {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 0, 255, 0.3);
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    
+    /* FORCE EXPANSION */
+    width: 1200px;           /* Fill the parent container completely */
+    max-width: 95%;       /* Remove any artificial limits */
+    
+    /* SOLID HEIGHT */
+    height: 540px;         /* Fixed, tall height for desktop */
+    min-height: 540px;     /* Never shrink below this */
+    
+    margin: 0 auto;        /* Center it if parent allows */
+    display: flex; 
+    overflow: hidden; 
+    position: relative;
+    box-sizing: border-box;
+    
+    /* STOP SHRINKING */
+    flex-shrink: 0;        /* Do not let parent container squash this */
+    flex-grow: 1;          /* Grow to fill empty space */
+}
+
+/* ================================================================= */
+/* 2. LEFT PANEL (GRID): MAIN CONTENT */
+/* ================================================================= */
+.mini-grid-panel {
+    flex: 1;               /* Take all remaining space */
+    padding: 30px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex; flex-direction: column;
+    min-width: 0; 
+}
+
+.mini-header {
+    margin-bottom: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px;
+    flex-shrink: 0;
+}
+.mini-header h3 { color: #FF00FF; font-family: 'Courier New', monospace; font-size: 1.2rem; margin: 0; }
+.mini-header span { color: #888; font-size: 0.8rem; white-space: nowrap; margin-left: 10px; }
+
+/* GRID LOGIC */
+.constructs-grid {
+    display: grid;
+    /* Fill width efficiently with 110px bricks */
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
+    gap: 10px; 
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-gutter: stable;
+    height: 100%; 
+}
+
+/* BRICK STYLING */
+.brick {
+    height: 65px; /* Taller bricks for better visibility */
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+.brick:not(.revealed-safe):not(.revealed-trap):hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+    z-index: 2;
+}
+.brick-content { display: none; flex-direction: column; align-items: center; animation: popIn 0.3s ease; }
+@keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.brick-content i { font-size: 1.1rem; margin-bottom: 2px; }
+.brick-content span { font-size: 0.55rem; font-family: 'Courier New', monospace; text-transform: uppercase; }
+
+/* REVEALED STATES */
+.brick.revealed-safe { background: #FF00FF; border-color: #FF00FF; box-shadow: 0 0 15px rgba(255, 0, 255, 0.3); z-index: 1; }
+.brick.revealed-safe .brick-content { display: flex; color: black; font-weight: bold; }
+.brick.revealed-trap { background: rgba(255, 0, 0, 0.1); border-color: #FF0000; opacity: 0.6; }
+.brick.revealed-trap::after { content: '×'; color: #FF0000; font-size: 1.5rem; font-weight: bold; }
+
+
+/* ================================================================= */
+/* 3. RIGHT PANEL (INSPECTOR): FIXED WIDTH */
+/* ================================================================= */
+.mini-inspector-panel {
+    /* Fixed width ensures details don't get crushed */
+    flex: 0 0 420px; 
+    width: 420px;
+    
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    position: relative;
+    display: flex; flex-direction: column;
+    border-left: 1px solid rgba(255,0,255,0.1);
+    transition: width 0.2s;
+}
+
+.inspector-placeholder, .trap-message { 
+    height: 100%; display: flex; flex-direction: column; 
+    align-items: center; justify-content: center; text-align: center; 
+}
+.inspector-placeholder { color: #555; }
+.inspector-placeholder i { font-size: 4rem; margin-bottom: 20px; opacity: 0.3; color: #FF00FF; }
+.trap-message { color: #FF0000; animation: glitchFade 0.2s; }
+.trap-message i { font-size: 4rem; margin-bottom: 20px; }
+
+.script-detail { display: flex; flex-direction: column; height: 100%; animation: fadeIn 0.3s ease forwards; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+.detail-header { border-bottom: 1px dashed #444; padding-bottom: 15px; margin-bottom: 15px; }
+.detail-header h2 { color: white; font-size: 1.6rem; margin-bottom: 5px; line-height: 1.2; }
+.detail-tag { color: #FF00FF; font-family: 'Courier New', monospace; font-size: 0.8rem; border: 1px solid #FF00FF; padding: 2px 6px; border-radius: 4px; display: inline-block; }
+
+.detail-body { 
+    flex: 1; color: #ccc; font-size: 0.95rem; line-height: 1.6; 
+    overflow-y: auto; 
+    padding-right: 5px;
+    word-wrap: break-word; 
+}
+
+.detail-links { margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; }
+.pink-btn { 
+    flex: 1; padding: 12px; border: 1px solid #FF00FF; color: #FF00FF; 
+    text-align: center; border-radius: 6px; text-decoration: none; 
+    display: flex; align-items: center; justify-content: center; gap: 8px; 
+    font-size: 0.9rem; transition: 0.2s; white-space: nowrap; 
+}
+.pink-btn:hover { background: #FF00FF; color: black; }
+
+
+/* ================================================================= */
+/* 4. RESPONSIVE BREAKPOINTS */
+/* ================================================================= */
+
+/* Laptop: Squeeze the Inspector slightly */
+
+
+/* Mobile: Full Stack */
+@media (max-width: 1200px) {
+    .mini-layout { 
+        flex-direction: column; 
+        height: auto; 
+        min-height: 700px;
+        width:auto !important; 
+        max-width: 100% !important; 
+        margin: 0; padding: 0;
+        border: none; border-top: 1px solid #FF00FF; border-bottom: 1px solid #FF00FF;
+        border-radius: 0;
+    }
+
+    .mini-grid-panel { 
+        border-right: none; 
+        border-bottom: 1px solid #333; 
+        height: 400px; 
+        flex: none; 
+        padding: 15px;
+    }
+
+    .mini-inspector-panel { 
+        width: 100%; 
+        height: auto; 
+        min-height: 300px;
+        padding: 20px; 
+        flex: auto;
+    }
+}

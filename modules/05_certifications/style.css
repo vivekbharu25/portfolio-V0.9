@@ -1,0 +1,171 @@
+/* MODULE 05: DYNAMIC THEME (REDUCED HEIGHT) */
+
+.header-right-logos {
+    display: flex; 
+    gap: 30px;
+    
+    /* SCROLLABLE LOGIC */
+    overflow-x: auto;       /* Allows horizontal scrolling */
+    max-width: 600px;       /* Limits width so it doesn't hit the title */
+    padding: 10px 0;        /* Space for hover effects */
+    
+    /* HIDE SCROLLBAR (Clean Look) */
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE/Edge */
+    
+    /* ALIGNMENT */
+    align-items: center;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); /* Fades edges */
+}
+.header-right-logos::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+
+/* Individual Icons */
+.header-right-logos i { 
+    font-size: 1.5rem; color: #666; 
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer; flex-shrink: 0; /* Prevents squashing */
+}
+
+
+/* 2. SMOOTH CONTENT REVEAL */
+.cert-expand-area {
+    height: 520px;
+    display: flex; flex-direction: column;
+    
+    /* FADE IN LOGIC */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none; /* Cannot click while closed */
+}
+
+/* When Expanded, Fade Content In */
+.cert-layout.expanded .cert-expand-area {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+    transition-delay: 0.1s; /* Wait for box to start opening */
+}
+
+/* 1. MAIN CONTAINER */
+.cert-layout {
+    background: rgba(15, 15, 20, 0.95);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    
+    /* DEFAULT STATE (Compact) */
+    width: 90%; 
+    max-width: 900px; 
+    height: 60px;     
+    
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    
+    /* SMOOTH TRANSITIONS */
+    transition: 
+        height 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+        max-width 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+        border-color 0.3s;
+}
+
+/* EXPANDED STATE (Height Reduced to 580px) */
+.cert-layout.expanded {
+    max-width: 1400px; 
+    height: 580px;     /* CHANGED: 660px -> 580px */
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+}
+
+/* 2. HEADER */
+.cert-header {
+    height: 60px; 
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.header-left { display: flex; align-items: center; gap: 15px; color: white; }
+.header-left i { font-size: 1.2rem; color: #FFD700; }
+.header-left h3 { 
+    font-family: 'Courier New', monospace; 
+    letter-spacing: 3px; font-size: 1.1rem; margin: 0; 
+}
+
+/* LOGO CLUSTER */
+.header-right-logos { display: flex; gap: 40px; } 
+
+.header-right-logos i { 
+    font-size: 1.5rem; color: #666; 
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer; position: relative;
+    padding: 5px;
+}
+
+.header-right-logos i:hover { color: white; transform: scale(1.3); }
+
+.header-right-logos i.active-logo {
+    color: #FFD700;         
+    transform: scale(1.4);  
+    text-shadow: 0 0 15px #FFD700; 
+}
+
+.cert-layout.expanded .header-right-logos i:not(.active-logo) {
+    opacity: 0.3;
+    transform: scale(0.9);
+}
+
+/* 3. EXPAND AREA (Calculated: 580 total - 60 header = 520px) */
+.cert-expand-area {
+    height: 520px; /* CHANGED: 600px -> 520px */
+    display: flex; flex-direction: column;
+}
+
+/* PDF SECTION */
+.pdf-wrapper {
+    flex: 1; 
+    position: relative;
+    background: #000;
+}
+iframe#cert-frame {
+    width: 100%; height: 100%; border: none;
+    position: relative; z-index: 2;
+}
+.pdf-loader {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    color: #444; font-size: 2rem; z-index: 1;
+}
+
+/* 4. SKILLS FOOTER */
+.cert-skills-footer {
+    height: 60px;
+    background: #111;
+    border-top: 1px solid #333;
+    display: flex; align-items: center;
+    padding: 0 40px;
+    gap: 20px;
+}
+
+.skill-label { 
+    font-family: 'Courier New', monospace; 
+    color: #FFD700; font-size: 0.8rem; font-weight: bold; 
+    letter-spacing: 1px;
+}
+
+.skill-tags-row { display: flex; gap: 10px; }
+.skill-tag {
+    background: rgba(255,255,255,0.1);
+    color: #ccc;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }

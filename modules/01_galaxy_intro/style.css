@@ -1,0 +1,51 @@
+/* Styles for 01_galaxy_intro */
+#intro-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 10;
+    cursor: pointer; /* Shows the user they can click */
+}
+
+/* === GLOBAL SETUP === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: #000;
+    color: white;
+    font-family: 'Courier New', Courier, monospace; /* Placeholder font */
+    overflow: hidden; /* START LOCKED (No Scrolling) */
+}
+
+/* === THE UNIVERSE WALLPAPER === */
+#galaxy-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: -1; /* Always behind everything */
+}
+
+/* === THE FLASH BANG TRANSITION === */
+#transition-flash {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: white;
+    opacity: 0; pointer-events: none;
+    z-index: 9999;
+}
+
+.flash-bang {
+    animation: flashAnim 1.5s ease-out forwards;
+}
+
+@keyframes flashAnim {
+    0% { opacity: 0; }
+    50% { opacity: 1; } /* Pure White Blindness */
+    100% { opacity: 0; }
+}
+
+/* === INTERFACE VISIBILITY === */
+.hidden { opacity: 0; pointer-events: none; transition: opacity 2s ease; }
+.visible { opacity: 1; pointer-events: all; }
+
+/* Specific styles for the Galaxy Intro Module */

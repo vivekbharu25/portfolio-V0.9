@@ -1,0 +1,48 @@
+<div id="cert-module" class="cert-layout dynamic-theme" onmouseleave="closeCert()">
+    
+    <div class="cert-header">
+        <div class="header-left">
+            <i class="fas fa-certificate"></i>
+            <h3>CREDENTIALS</h3>
+        </div>
+        
+        <div class="header-right-logos">
+            <i id="btn-c1" class="fab fa-google" 
+               onmouseenter="openCert('c1', 'assets/certs/GCP_Fundamentals.pdf')" 
+               title="Google Cloud"></i>
+            
+            <i id="btn-c2" class="fab fa-python" 
+               onmouseenter="openCert('c2', 'assets/certs/Using Python for Automation.pdf')" 
+               title="Python Automation"></i>
+            
+            <i id="btn-c3" class="fas fa-brain" 
+               onmouseenter="openCert('c3', 'assets/certs/AI_for_Everyone.pdf')" 
+               title="AI For Everyone"></i>
+            
+            <i id="btn-c4" class="fas fa-square-root-alt" 
+               onmouseenter="openCert('c4', 'assets/certs/Foundational_Math_for_Machine Learning.pdf')" 
+               title="Math for ML"></i>
+            
+            <i id="btn-c5" class="fas fa-code" 
+               onmouseenter="openCert('c5', 'assets/certs/100_Days.pdf')" 
+               title="100 Days of Code"></i>
+        </div>
+    </div>
+
+    <div class="cert-expand-area">
+        
+        <div class="pdf-wrapper">
+            <iframe id="cert-frame" src="" type="application/pdf"></iframe>
+            <div class="pdf-loader">
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </div>
+        </div>
+
+        <div class="cert-skills-footer">
+            <span class="skill-label">SKILLS ACQUIRED:</span>
+            <div id="dynamic-skills" class="skill-tags-row">
+                </div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,203 @@
+/* =========================================================================
+   MODULE 08: TRANSMISSION (CRIMSON THEME)
+   ========================================================================= */
+
+:root {
+    --alert-red: #ff3333;
+    --alert-dark: rgba(50, 0, 0, 0.8);
+    --alert-glow: rgba(255, 51, 51, 0.4);
+}
+
+.transmission-container {
+    width: 90vw;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    font-family: 'Courier New', monospace;
+    color: var(--alert-red);
+}
+
+.trans-grid {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+}
+
+/* --- LEFT COL: RESUME CHIP --- */
+.trans-col { flex: 1; }
+
+.data-frame {
+    border: 1px solid var(--alert-red);
+    background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(20,0,0,0.9));
+    padding: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(255,0,0,0.1);
+}
+
+.data-frame::before {
+    content: ''; position: absolute; top: -2px; left: -2px;
+    width: 10px; height: 10px; border-top: 2px solid var(--alert-red); border-left: 2px solid var(--alert-red);
+}
+
+.frame-header {
+    width: 100%; display: flex; justify-content: space-between;
+    border-bottom: 1px dashed var(--alert-glow);
+    padding-bottom: 10px; margin-bottom: 30px;
+    font-size: 0.8rem; letter-spacing: 2px;
+}
+
+/* The Holographic Chip */
+.holo-chip-container {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    margin-bottom: 30px;
+    animation: floatChip 4s ease-in-out infinite;
+}
+
+.holo-chip {
+    width: 80px; height: 80px;
+    border: 2px solid var(--alert-red);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    background: rgba(255, 51, 51, 0.1);
+    box-shadow: 0 0 30px var(--alert-glow);
+}
+
+.chip-icon { font-size: 2.5rem; color: #fff; text-shadow: 0 0 10px var(--alert-red); }
+
+.chip-scanline {
+    position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    background: #fff;
+    animation: scanDown 2s linear infinite;
+    opacity: 0.7;
+}
+
+.chip-label { font-weight: bold; font-size: 1.1rem; color: #fff; }
+.chip-size { font-size: 0.7rem; opacity: 0.7; }
+
+/* Extract Button */
+.extract-btn {
+    width: 100%; padding: 15px;
+    background: transparent;
+    border: 1px solid var(--alert-red);
+    color: var(--alert-red);
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+    font-weight: bold; letter-spacing: 1px;
+}
+
+.extract-btn:hover {
+    background: var(--alert-red);
+    color: #000;
+    box-shadow: 0 0 20px var(--alert-glow);
+}
+
+
+/* --- SOCIAL NODES --- */
+.social-nodes {
+    display: flex; justify-content: center; gap: 20px;
+    margin-top: 30px;
+}
+
+.node-link {
+    width: 50px; height: 50px;
+    border: 1px solid var(--alert-red);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--alert-red);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+.node-link:hover {
+    background: var(--alert-red);
+    color: #000;
+    transform: scale(1.1);
+}
+
+.node-tooltip {
+    position: absolute; bottom: -30px;
+    font-size: 0.6rem; width: 100px; text-align: center;
+    opacity: 0; transition: 0.3s; pointer-events: none;
+}
+.node-link:hover .node-tooltip { opacity: 1; bottom: -25px; }
+
+
+/* --- RIGHT COL: FORM --- */
+.uplink-terminal {
+    background: rgba(0,0,0,0.8);
+    border-left: 2px solid var(--alert-red);
+    padding: 30px;
+    height: 100%;
+}
+
+.terminal-header {
+    margin-bottom: 30px; font-size: 0.9rem;
+    color: #fff; letter-spacing: 1px;
+}
+.blink-dot { color: var(--alert-red); animation: pulse 1s infinite; }
+
+.input-group { margin-bottom: 25px; position: relative; }
+
+.input-group label {
+    display: block; font-size: 0.7rem; margin-bottom: 5px; opacity: 0.8;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #333;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    padding: 10px 0;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus, .input-group textarea:focus {
+    border-bottom-color: var(--alert-red);
+}
+
+.broadcast-btn {
+    width: 100%; padding: 15px;
+    background: var(--alert-red);
+    color: #000; border: none;
+    font-family: 'Courier New', monospace;
+    font-weight: bold; cursor: pointer;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    transition: 0.3s;
+}
+
+.broadcast-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+/* Footer */
+.system-footer-line {
+    text-align: center; margin-top: 40px; font-size: 0.7rem; opacity: 0.5;
+}
+
+@keyframes floatChip {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes scanDown {
+    0% { top: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@media (max-width: 800px) {
+    .trans-grid { flex-direction: column; }
+}

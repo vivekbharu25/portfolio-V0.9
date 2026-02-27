@@ -1,0 +1,201 @@
+/* MODULE 02: GAME HUD STYLES */
+
+.game-hud-layout {
+    background: rgba(5, 10, 15, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    width: 95%; max-width: 1200px; margin: auto;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
+    display: flex; align-items: stretch; gap: 40px;
+}
+
+/* === LEFT SIDEBAR === */
+.bio-left { 
+    flex: 0 0 280px; 
+    display: flex; flex-direction: column; align-items: center; 
+    gap: 25px; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 30px;
+}
+
+/* Photo & Top Right Badge */
+.photo-wrapper { position: relative; width: 220px; height: 220px; }
+.photo-stack { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50%; 
+    overflow: hidden; 
+    border: 4px solid #333; 
+    z-index: 2; 
+    position: relative; 
+    background: #000; /* Background color prevents seeing through */
+}.photo-stack img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s; }
+.photo-back { opacity: 0; }
+.photo-wrapper:hover .photo-back { opacity: 1; }
+.hud-ring {
+    position: absolute; 
+    top: -15px; 
+    left: -15px; 
+    width: 250px; 
+    height: 250px; 
+    
+    /* The Visuals */
+    border: 2px dashed rgba(0, 255, 65, 0.4); 
+    border-top-color: transparent; /* Makes it look like a broken tech ring */
+    border-left-color: transparent; 
+    border-radius: 50%; 
+    z-index: 1; 
+    
+    /* The Animation Trigger */
+    animation: spinTech 6s linear infinite;
+}
+/* MOVED LEVEL BADGE TO TOP RIGHT */
+.level-badge {
+    position: absolute; 
+    top: 0; right: 0; /* Top Right Corner */
+    bottom: auto;     /* Remove bottom anchor */
+    background: #FFD700; color: black; font-weight: bold; padding: 4px 8px; font-size: 0.8rem;
+    border-radius: 4px; z-index: 10; font-family: 'Courier New', monospace; cursor: help;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    transform: translate(20%, -20%); /* Slight pop out */
+}
+
+/* Stats */
+.stats-container { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+.stat-header { display: flex; justify-content: space-between; font-family: 'Courier New', monospace; font-size: 0.75rem; color: #aaa; margin-bottom: 4px; }
+.progress-bar { width: 100%; height: 6px; background: #222; border-radius: 3px; overflow: hidden; }
+.fill { height: 100%; border-radius: 3px; }
+
+/* GLITCH BAR (Discipline) */
+.glitch-bar-container { background: #333; }
+.glitch-fill {
+    width: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #FFD700,
+        #FFD700 10px,
+        #333 10px,
+        #333 20px
+    );
+    animation: glitchMove 20s linear infinite;
+    opacity: 0.8;
+}
+@keyframes glitchMove { 0% { background-position: 0 0; } 100% { background-position: 50px 0; } }
+@keyframes spinTech { 
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); } 
+}
+/* Traits */
+.traits-box {
+    width: 100%; margin-top: auto; 
+    background: rgba(0,0,0,0.3); border: 1px solid #333;
+    padding: 15px; border-radius: 8px; display: flex; flex-direction: column; gap: 12px;
+}
+.trait { display: flex; align-items: center; gap: 10px; text-align: left; }
+.trait strong { display: block; color: white; font-size: 0.8rem; }
+.trait span { color: #888; font-size: 0.7rem; display: block; line-height: 1.2; }
+
+/* === RIGHT BODY === */
+.bio-right { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+
+/* Header Row */
+.hud-header-row { 
+    display: flex; justify-content: space-between; align-items: flex-start; 
+    border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 25px;
+}
+
+/* NAME REVEAL EFFECT */
+.player-name-wrapper { 
+    font-family: 'Courier New', monospace; font-size: 2.2rem; margin-bottom: 5px; 
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); color: white;
+}
+.name-reveal { position: relative; color: #FFD700; cursor: pointer; transition: 0.2s; border-bottom: 1px dashed transparent;}
+/* .name-reveal:hover { border-bottom-color: #FFD700; } */
+/* .name-reveal:hover::after { */
+    /* content: attr(data-full); Swaps name on tooltip essentially */
+    /* position: absolute; left: 0; top: 0; */
+    /* background: #000; color: #FFD700; */
+    /* width: 150%; z-index: 10; */
+/* } */
+
+.header-quote { font-style: italic; color: #888; font-size: 0.85rem; margin-bottom: 10px; }
+.player-class { color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+
+/* SOCIAL GRID 2x2 */
+.grid-2x2 { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 8px; 
+    background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px; border: 1px solid #444; 
+}
+.social-icon { 
+    color: #888; font-size: 1.1rem; width: 32px; height: 32px; 
+    display: flex; align-items: center; justify-content: center; 
+    border-radius: 4px; transition: 0.3s; background: rgba(0,0,0,0.3);
+}
+.social-icon:hover { background: #FFD700; color: black; }
+
+/* Text & Fitness */
+.bio-text { font-size: 1rem; color: #ccc; line-height: 1.8; margin-bottom: 30px; }
+.fitness-line { 
+    width: 100%; margin-bottom: 30px; 
+    background: rgba(0,0,0,0.4); padding: 10px 15px; border-radius: 5px; 
+    display: flex; align-items: center; gap: 15px; border-left: 3px solid #FFD700;
+}
+.fit-label { color: #FFD700; font-weight: bold; font-family: 'Courier New', monospace; font-size: 0.8rem; white-space: nowrap; }
+.fit-desc { color: #666; font-size: 0.8rem; flex: 1; font-style: italic; }
+.fit-bar { height: 4px; flex: 1; background: #333; position: relative; overflow: hidden; }
+.fit-bar::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 60%; background: #FFD700; opacity: 0.5; }
+
+/* Buttons */
+.action-bar-horizontal { display: flex; gap: 15px; margin-top: auto; }
+.hud-btn {
+    flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid #444; color: #ccc;
+    padding: 15px; text-align: center; border-radius: 5px; font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    text-decoration: none; transition: 0.2s; cursor: pointer;
+}
+.hud-btn:hover { border-color: #00FF41; color: #00FF41; background: rgba(0, 255, 65, 0.1); transform: translateY(-3px); }
+
+/* Tooltips */
+.interactive-term { position: relative; cursor: help; }
+.interactive-term:hover::after {
+    content: attr(data-tooltip); position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.95); border: 1px solid #00FF41; color: #00FF41;
+    font-family: 'Courier New', monospace; font-size: 0.75rem; padding: 8px 12px;
+    border-radius: 5px; white-space: nowrap; z-index: 100; pointer-events: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .game-hud-layout { flex-direction: column; padding: 20px; }
+    .bio-left { border-right: none; border-bottom: 1px solid #333; padding-right: 0; padding-bottom: 30px; width: 100%; }
+    .hud-header-row { flex-direction: column; text-align: center; gap: 20px; align-items: center; }
+    .action-bar-horizontal { flex-wrap: wrap; }
+}
+
+.slide-img {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    opacity: 0; /* Hidden by default */
+    animation: slideshowFade 12s infinite; /* 12s total loop (3s per photo) */
+}
+
+/* TIMING MAGIC: Stagger the start times */
+.img-1 { animation-delay: 0s; }
+.img-2 { animation-delay: 3s; }
+.img-3 { animation-delay: 6s; }
+.img-4 { animation-delay: 9s; }
+
+/* The Fade Animation */
+@keyframes slideshowFade {
+    0% { opacity: 0; }
+    10% { opacity: 1; }  /* Fade In fast */
+    25% { opacity: 1; }  /* Stay visible */
+    35% { opacity: 0; }  /* Fade Out */
+    100% { opacity: 0; }
+}

@@ -1,0 +1,701 @@
+<div class="holo-wrapper" id="ar-console-root">
+
+    <div class="holo-col left-panel" id="visual-deck">
+        
+        <div class="ui-layer pointer-events-none">
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            
+            <div class="scan-grid-overlay"></div>
+            <div class="scan-line-anim"></div>
+            
+            <div class="ar-header-bar">
+                <div class="header-left">
+                    <i class="fas fa-satellite-dish pulse-icon"></i>
+                    <span class="header-label">VISUAL_FEED // LIVE</span>
+                </div>
+                <div class="header-right">
+                    <span class="sys-code">SYS_NOMINAL</span>
+                    <span class="sys-ping">12ms</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-zone prev-zone" onclick="manualSlide(-1)">
+            <div class="zone-feedback">
+                <i class="fas fa-chevron-left"></i>
+                <span class="nav-label">PREV_LOG</span>
+            </div>
+            <div class="zone-glare"></div>
+        </div>
+
+        <div class="nav-zone next-zone" onclick="manualSlide(1)">
+            <div class="zone-feedback">
+                <span class="nav-label">NEXT_LOG</span>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="zone-glare"></div>
+        </div>
+
+        <div class="slider-stage">
+            <div class="slides-track">
+                
+                <div class="slide active">
+                    
+                    <div class="slide-visual" style="cursor: pointer;" onclick="window.open('https://youtu.be/c5dq_P5vXWE?si=KLlWmhYnFP0AMGkK', '_blank')">
+                        <img src="assets/images/activities/Lexis_office_22.jpg" 
+                             alt="Lexis Club Event" 
+                             class="slide-bg">
+                        <div class="img-overlay-gradient"></div>
+                    </div>
+
+                    <div class="slide-meta-container">
+                        <div class="meta-tag top-right">
+                            <span class="label">IMG_ID:</span>
+                            <span class="val">LXS_001.RAW</span>
+                        </div>
+                        <div class="meta-tag bottom-right-float">
+                            <i class="fas fa-users"></i> LEADERSHIP
+                        </div>
+                    </div>
+
+                    <div class="ar-info-plate">
+                        <div class="plate-glass-blur"></div>
+                        <div class="plate-border-glow"></div>
+                        
+                        <div class="plate-collapsed">
+                            <div class="plate-header-row">
+                                <span class="plate-index">01 // 03</span>
+                                <div class="plate-status-dot"></div>
+                            </div>
+                            <h2 class="plate-title">THE LEXIS CLUB</h2>
+                            <div class="plate-sub">TECHNICAL HEAD</div>
+                        </div>
+
+                        <div class="plate-expanded">
+                            <div class="plate-divider"></div>
+                            
+                            <div class="plate-data-grid">
+                                <div class="data-cell">
+                                    <span class="d-label">IMPACT</span>
+                                    <span class="d-val text-cyan">+20% Engagement</span>
+                                </div>
+                                <div class="data-cell">
+                                    <span class="d-label">TEAM</span>
+                                    <span class="d-val">15 Members</span>
+                                </div>
+                            </div>
+
+                            <p class="plate-desc">
+                                Directed technical initiatives and social campaigns. 
+                                Designed gamified events to boost student participation across departments.
+                            </p>
+
+                            <a href="https://www.instagram.com/the_lexis_club/" class="ar-action-link">
+                                <span class="btn-text">INITIALIZE_LINK</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    
+                    <div class="slide-visual" style="cursor: pointer;" onclick="window.open('https://www.instagram.com/codeoholics/', '_blank')">
+                        <img src="assets/images/activities/codeH.JPG" 
+                             alt="CodeOHolics" 
+                             class="slide-bg">
+                        <div class="img-overlay-gradient"></div>
+                    </div>
+
+                    <div class="slide-meta-container">
+                        <div class="meta-tag top-right">
+                            <span class="label">IMG_ID:</span>
+                            <span class="val">CDH_042.JPG</span>
+                        </div>
+                        <div class="meta-tag bottom-right-float">
+                            <i class="fas fa-code-branch"></i> MENTORSHIP
+                        </div>
+                    </div>
+
+                    <div class="ar-info-plate">
+                        <div class="plate-glass-blur"></div>
+                        <div class="plate-border-glow"></div>
+                        
+                        <div class="plate-collapsed">
+                            <div class="plate-header-row">
+                                <span class="plate-index">02 // 03</span>
+                                <div class="plate-status-dot"></div>
+                            </div>
+                            <h2 class="plate-title">CODEOHOLICS</h2>
+                            <div class="plate-sub">EXECUTIVE MEMBER</div>
+                        </div>
+
+                        <div class="plate-expanded">
+                            <div class="plate-divider"></div>
+                            
+                            <div class="plate-data-grid">
+                                <div class="data-cell">
+                                    <span class="d-label">FOCUS</span>
+                                    <span class="d-val text-cyan">DSA & Algorithms</span>
+                                </div>
+                                <div class="data-cell">
+                                    <span class="d-label">STUDENTS</span>
+                                    <span class="d-val">50+ Peers</span>
+                                </div>
+                            </div>
+
+                            <p class="plate-desc">
+                                Led algorithmic problem-solving sessions. 
+                                Managed logistics for 24-hour hackathons and coding bootcamps.
+                            </p>
+
+                            <a href="https://www.instagram.com/codeoholics/" class="ar-action-link">
+                                <span class="btn-text">ACCESS_REPO</span>
+                                <i class="fas fa-terminal"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    
+                    <div class="slide-visual">
+                        <img src="assets/certs/images/JPMC.png" 
+                             alt="JPMC Sim" 
+                             class="slide-bg">
+                        <div class="img-overlay-gradient"></div>
+                    </div>
+
+                    <div class="slide-meta-container">
+                        <div class="meta-tag top-right">
+                            <span class="label">IMG_ID:</span>
+                            <span class="val">JPM_SIM.PNG</span>
+                        </div>
+                        <div class="meta-tag bottom-right-float">
+                            <i class="fas fa-briefcase"></i> CAREER
+                        </div>
+                    </div>
+
+                    <div class="ar-info-plate">
+                        <div class="plate-glass-blur"></div>
+                        <div class="plate-border-glow"></div>
+                        
+                        <div class="plate-collapsed">
+                            <div class="plate-header-row">
+                                <span class="plate-index">03 // 03</span>
+                                <div class="plate-status-dot"></div>
+                            </div>
+                            <h2 class="plate-title">FORAGE (J.P.M)</h2>
+                            <div class="plate-sub">DATA ENGINEERING SIM</div>
+                        </div>
+
+                        <div class="plate-expanded">
+                            <div class="plate-divider"></div>
+                            
+                            <div class="plate-data-grid">
+                                <div class="data-cell">
+                                    <span class="d-label">STACK</span>
+                                    <span class="d-val text-cyan">Python / Pandas</span>
+                                </div>
+                                <div class="data-cell">
+                                    <span class="d-label">TYPE</span>
+                                    <span class="d-val">Simulation</span>
+                                </div>
+                            </div>
+
+                            <p class="plate-desc">
+                                Constructed ETL pipelines and visualized financial datasets.
+                                Optimized data flow for credit analysis modules.
+                            </p>
+
+                            <a href="https://www.theforage.com/completion-certificates/J.P.%20Morgan/R5iK7HMxJGBgaSbvk_J.P.%20Morgan_dMZ24H6J7zZ7NskAw_1662646082966_completion_certificate.pdf" class="ar-action-link">
+                                <span class="btn-text">VIEW_CERTIFICATE</span>
+                                <i class="fas fa-certificate"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    
+                    <div class="slide-visual" style="cursor: pointer;" onclick="window.open('https://www.theforage.com/completion-certificates/Skyscanner/km4rw7dihDr3etqom_Skyscanner_dMZ24H6J7zZ7NskAw_1727636622158_completion_certificate.pdf', '_blank')">
+                        <img src="assets/certs/images/Ss.png" 
+                             alt="Skyscanner Sim" 
+                             class="slide-bg">
+                        <div class="img-overlay-gradient"></div>
+                    </div>
+
+                    <div class="slide-meta-container">
+                        <div class="meta-tag top-right">
+                            <span class="label">IMG_ID:</span>
+                            <span class="val">SKY_SIM.PNG</span>
+                        </div>
+                        <div class="meta-tag bottom-right-float">
+                            <i class="fas fa-code"></i> FRONTEND
+                        </div>
+                    </div>
+
+                    <div class="ar-info-plate">
+                        <div class="plate-glass-blur"></div>
+                        <div class="plate-border-glow"></div>
+                        
+                        <div class="plate-collapsed">
+                            <div class="plate-header-row">
+                                <span class="plate-index">04 // 04</span>
+                                <div class="plate-status-dot"></div>
+                            </div>
+                            <h2 class="plate-title">FORAGE (SKYSCANNER)</h2>
+                            <div class="plate-sub">FRONT END ENG SIM</div>
+                        </div>
+
+                        <div class="plate-expanded">
+                            <div class="plate-divider"></div>
+                            
+                            <div class="plate-data-grid">
+                                <div class="data-cell">
+                                    <span class="d-label">STACK</span>
+                                    <span class="d-val text-cyan">React / UI</span>
+                                </div>
+                                <div class="data-cell">
+                                    <span class="d-label">TYPE</span>
+                                    <span class="d-val">Simulation</span>
+                                </div>
+                            </div>
+
+                            <p class="plate-desc">
+                                Engineered interactive UI components and optimized client-side performance. 
+                                Implemented scalable front-end architectures for travel data applications.
+                            </p>
+
+                            <a href="https://www.theforage.com/completion-certificates/Skyscanner/km4rw7dihDr3etqom_Skyscanner_dMZ24H6J7zZ7NskAw_1727636622158_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="ar-action-link">
+                                <span class="btn-text">VIEW_CERTIFICATE</span>
+                                <i class="fas fa-certificate"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="holo-col right-panel" id="ar-stream-interface">
+    
+    <div class="ar-hud-top-minimal">
+        <div class="hud-item text-cyan" id="live-clock">2026.02.11 [LIVE]</div>
+        <div class="hud-status"><span class="pulse-dot">●</span> SYNC_ACTIVE</div>
+    </div>
+
+    <div class="rail-container">
+        
+        <div class="timeline-rail">
+            <div class="rail-track"></div>
+            <div class="rail-fill" id="rail-progress"></div>
+        </div>
+
+        <div class="stream-scroll-area" id="stream-scroll">
+            <div class="stream-content">
+
+                <div class="time-block" data-year="pinned">
+                    
+                    <div class="rail-dot-anchor">
+                        <div class="dot-circle" style="border-color: #00FFFF; box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);"></div>
+                        <span class="dot-year" style="color: #00FFFF; font-size: 0.7rem; letter-spacing: 1px;">INFO</span>
+                    </div>
+
+                    <div style="font-family: 'Courier New', monospace; font-size: 0.8rem; color: #a0aab5; background: rgba(0, 255, 255, 0.05); border-left: 2px solid #00FFFF; padding: 12px 15px; margin-bottom: 20px; border-radius: 0 8px 8px 0; line-height: 1.5;">
+                        <span style="color: #00FFFF; font-weight: bold;">// SYSTEM_LOG:</span><br>
+                        This panel includes images, video links, documents, and insights.<br>
+                        It might be funny, witty, entertaining, or strictly informative.<br>
+                        <span style="color: #FFD700;">> Scroll to initiate chron-stream.</span>
+                    </div>
+
+                    <div class="holo-card card-doc">
+                        <div class="chip-glass pdf-style">
+                            <i class="fas fa-user-astronaut chip-icon" style="color: #00FFFF;"></i>
+                            <div class="chip-info">
+                                <span class="chip-label">MANIFESTO</span>
+                                <h4 class="chip-name">about_the_architect.pdf</h4>
+                            </div>
+                            <a href="assets/images/documents/about.pdf" target="_blank" class="btn-open" style="border-color: #00FFFF; color: #00FFFF;">OPEN</a>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="time-block" data-year="2026">
+                    <div class="rail-dot-anchor">
+                        <div class="dot-circle"></div>
+                        <span class="dot-year">2026</span>
+                    </div>
+
+                    <div class="holo-card card-photo">
+                        <div class="media-box">
+                            <img src="assets/images/timeline_scroller/infinity.jpeg" class="media-content">
+                        </div>
+                        <div class="card-meta">
+                            <span class="meta-tag">JAN</span>
+                            <span class="meta-title">Shiv_Keshav_Anant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block" data-year="2025">
+                    <div class="rail-dot-anchor">
+                        <div class="dot-circle"></div>
+                        <span class="dot-year">2025</span>
+                    </div>
+
+                    <a href="https://www.youtube.com/watch?v=8nmJQz4-E_4" target="_blank" class="holo-card card-video">
+                        <div class="media-box">
+                            <img src="https://img.youtube.com/vi/8nmJQz4-E_4/maxresdefault.jpg" class="media-content">
+                            <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+                        </div>
+                        <div class="card-meta">
+                            <span class="meta-tag">APR</span>
+                            <span class="meta-title">VISUAL_FX_DEMO</span>
+                        </div>
+                    </a>
+
+                    <a href="https://youtu.be/Dabb6pQWFTc" target="_blank" class="holo-card card-video">
+                        <div class="media-box">
+                            <img src="https://img.youtube.com/vi/Dabb6pQWFTc/maxresdefault.jpg" class="media-content">
+                            <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+                        </div>
+                        <div class="card-meta">
+                            <span class="meta-tag">FEB</span>
+                            <span class="meta-title">ARCHIVE_LOG_FEB</span>
+                        </div>
+                    </a>
+
+                    <a href="https://youtu.be/NSAbuWLXHe0" target="_blank" class="holo-card card-video">
+                        <div class="media-box">
+                            <img src="https://img.youtube.com/vi/NSAbuWLXHe0/maxresdefault.jpg" class="media-content">
+                            <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+                        </div>
+                        <div class="card-meta">
+                            <span class="meta-tag">JAN</span>
+                            <span class="meta-title">ARCHIVE_LOG_JAN</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="time-block empty-block" data-year="2024">
+                    <div class="rail-dot-anchor dim">
+                        <div class="dot-circle hollow"></div>
+                        <span class="dot-year">2024</span>
+                    </div>
+
+                    <a href="https://www.youtube.com/watch?v=eeYgR4J4Pd0" target="_blank" class="holo-card card-video">
+                        <div class="media-box">
+                            <img src="https://img.youtube.com/vi/eeYgR4J4Pd0/maxresdefault.jpg" class="media-content">
+                            <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+                        </div>
+                        <div class="card-meta">
+                            <span class="meta-tag">APR</span>
+                            <span class="meta-title">TLDMC-4</span>
+                        </div>
+                    </a>
+
+                    <a href="https://youtu.be/MUnU3p-aGBQ" target="_blank" class="holo-card card-video">
+                        <div class="media-box">
+                            <img src="https://img.youtube.com/vi/MUnU3p-aGBQ/maxresdefault.jpg" class="media-content">
+                            <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+                        </div>
+                        <div class="card-meta">
+                            <span class="meta-tag">MAR</span>
+                            <span class="meta-title">TLDMC-3</span>
+                        </div>
+                    </a>
+                      <!-- <div class="glitch-gap">
+                        <span class="glitch-text">// ARCHIVE_CORRUPTED</span>
+                        <div class="glitch-line"></div>
+                    </div> -->
+                </div>
+
+                <div class="time-block" data-year="2023">
+                    <div class="rail-dot-anchor">
+                        <div class="dot-circle"></div>
+                        <span class="dot-year">2023</span>
+                    </div>
+
+                    <a href="https://youtu.be/CD_QYJBgCLQ" target="_blank" class="holo-card card-video">
+                        <div class="media-box">
+                            <img src="https://img.youtube.com/vi/CD_QYJBgCLQ/maxresdefault.jpg" class="media-content">
+                            <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+                        </div>
+                        <div class="card-meta">
+                            <span class="meta-tag">NOV</span>
+                            <span class="meta-title">Bal Ganesh AMV</span>
+                        </div>
+                    </a>
+
+            <a href="https://youtu.be/pDd_5oVAi0c" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/pDd_5oVAi0c/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">NOV</span>
+                <span class="meta-title">YAMATO_ORDINARY_PERSON</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/cPPPCLw5wn0" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/cPPPCLw5wn0/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">AUG</span>
+                <span class="meta-title">SANJI_X_ZORO</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/xk8sFtEa_ow" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/xk8sFtEa_ow/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">JUL</span>
+                <span class="meta-title">TLDMC_2</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/JOQH2R3DXPY" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/JOQH2R3DXPY/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">JUN</span>
+                <span class="meta-title">TLDMC_1</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/fq11klIVI8c" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/fq11klIVI8c/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">MAR</span>
+                <span class="meta-title">SENIORS_CREDITS</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="time-block" data-year="2022">
+        <div class="rail-dot-anchor">
+            <div class="dot-circle"></div>
+            <span class="dot-year">2022</span>
+        </div>
+
+        <a href="https://youtu.be/kLZGKXHq7rs" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/kLZGKXHq7rs/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">JUL</span>
+                <span class="meta-title">SENIORS_FAREWELL</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/nMWaNxoPyLQ" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/nMWaNxoPyLQ/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">JUN</span>
+                <span class="meta-title">LOKIVERSE_X_MCU</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/jgKNHA2l6rg" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/jgKNHA2l6rg/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">JUN</span>
+                <span class="meta-title">IRONMAN_CAP_NATPU</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/OEXGUp79woI" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/OEXGUp79woI/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">MAY</span>
+                <span class="meta-title">MARVEL_ANTHEM_TEL</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/0WFBUvwDdXw" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/0WFBUvwDdXw/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">JAN</span>
+                <span class="meta-title">CMRTC_AKRITI</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="time-block" data-year="2021">
+        <div class="rail-dot-anchor">
+            <div class="dot-circle"></div>
+            <span class="dot-year">2021</span>
+        </div>
+
+        <a href="https://youtu.be/4-h2Tgk8EGI" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/4-h2Tgk8EGI/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">AUG</span>
+                <span class="meta-title">CMR_EVARIDHI</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/03yXrqSg-jI" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/03yXrqSg-jI/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">APR</span>
+                <span class="meta-title">HBD_MAGGIE</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/SRLXJWodjNo" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/SRLXJWodjNo/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">APR</span>
+                <span class="meta-title">GOT_EVERYTHING_AT_ONCE</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/hjrDLq__f30" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/hjrDLq__f30/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">FEB</span>
+                <span class="meta-title">ROM_DIAGS</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/7_Hih_5hIQo" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/7_Hih_5hIQo/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">JAN</span>
+                <span class="meta-title">FRIENDS_DORAEMON</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="time-block" data-year="2020">
+        <div class="rail-dot-anchor">
+            <div class="dot-circle"></div>
+            <span class="dot-year">2020</span>
+        </div>
+
+        <a href="https://youtu.be/CcvwmyBQiGs" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/CcvwmyBQiGs/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">DEC</span>
+                <span class="meta-title">FRIENDS_AMONG_US</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/gKHlgj2EkFQ" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/gKHlgj2EkFQ/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">JUN</span>
+                <span class="meta-title">HARRY_POTTER_FRIENDS</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/fsOmG6xIklk" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/fsOmG6xIklk/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">MAR</span>
+                <span class="meta-title">ROAR_MCU_DCEU</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="time-block" data-year="2019">
+        <div class="rail-dot-anchor">
+            <div class="dot-circle"></div>
+            <span class="dot-year">2019</span>
+        </div>
+
+        <a href="https://youtu.be/D0Ym3pyFp28" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/D0Ym3pyFp28/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">DEC</span>
+                <span class="meta-title">MARVEL_ANTHEM_TAM</span>
+            </div>
+        </a>
+
+        <a href="https://youtu.be/g_YML3_8zp4" target="_blank" class="holo-card card-video">
+            <div class="media-box">
+                <img src="https://img.youtube.com/vi/g_YML3_8zp4/maxresdefault.jpg" class="media-content">
+                <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="card-meta">
+                <span class="meta-tag">AUG</span>
+                <span class="meta-title">IRONMAN_TRIBUTE</span>
+            </div>
+        </a>
+    </div>
+
+                <div class="time-block empty-block" data-year="2000">
+                    <div class="rail-dot-anchor dim">
+                        <div class="dot-circle hollow"></div>
+                        <span class="dot-year" style="font-size: 0.7rem; letter-spacing: 0px;">2000-16</span>
+                    </div>
+                    <div class="glitch-gap">
+                        <span class="glitch-text">// BASE FOR SYSTEM_ORIGINS</span>
+                        <div class="glitch-line"></div>
+                    </div>
+                </div>
+
+                <div class="stream-footer" id="end-trigger">
+                    <div class="terminal-line">// END OF ARCHIVE //</div>
+                    <div class="terminal-line dim">[ SYSTEM RESET... ]</div>
+                </div>
+
+                <div class="spacer-bottom"></div>
+            </div>
+        </div>
+    </div>
+</div>
