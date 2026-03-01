@@ -322,6 +322,25 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
+// D. Init
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Load All Modules
+    loadModule('bio-container', 'modules/02_profile_bio/view.html');
+    loadModule('experience-container', 'modules/02b_experience/view.html'); // NEW
+    loadModule('projects-container', 'modules/03_projects_main/view.html'); 
+    loadModule('mini-container', 'modules/04_mini_scripts/view.html');
+    loadModule('certs-container', 'modules/05_certifications/view.html');
+    loadModule('holo-console-container', 'modules/06_holo_console/view.html');
+    loadModule('recs-container', 'modules/07_recs_rail/view.html');
+    loadModule('transmission-container', 'modules/08_transmission/view.html');
+    // 2. Start Observers
+    document.querySelectorAll('.step-section').forEach(s => observer.observe(s));
+    
+    // 3. Start Experience Trigger
+    const expSection = document.getElementById('experience');
+    if(expSection) experienceObserver.observe(expSection);
+});
+
 // ==========================================
 // 7. EVENTS & MODULE LOADING
 // ==========================================
@@ -416,24 +435,7 @@ const experienceObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
-// D. Init
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Load All Modules
-    loadModule('bio-container', 'modules/02_profile_bio/view.html');
-    loadModule('experience-container', 'modules/02b_experience/view.html'); // NEW
-    loadModule('projects-container', 'modules/03_projects_main/view.html'); 
-    loadModule('mini-container', 'modules/04_mini_scripts/view.html');
-    loadModule('certs-container', 'modules/05_certifications/view.html');
-    loadModule('holo-console-container', 'modules/06_holo_console/view.html');
-    loadModule('recs-container', 'modules/07_recs_rail/view.html');
-    loadModule('transmission-container', 'modules/08_transmission/view.html');
-    // 2. Start Observers
-    document.querySelectorAll('.step-section').forEach(s => observer.observe(s));
-    
-    // 3. Start Experience Trigger
-    const expSection = document.getElementById('experience');
-    if(expSection) experienceObserver.observe(expSection);
-});
+
 
 // C. CYBER WALL GAME LOGIC
 
@@ -666,54 +668,88 @@ window.moveSlide = function(n) {
 };
 
 
-// 2. RIGHT PANEL RAIL ENGINE
+// 2. RIGHT PANEL RAIL ENGINE (HYBRID - STABLE)
 function initRailEngine() {
-    console.log(">> SYSTEM: Initializing Rail Engine...");
+    console.log(">> SYSTEM: Initializing Hybrid Rail Engine...");
     
-    const stream = document.getElementById('stream-scroll');
-    const railFill = document.getElementById('rail-progress');
+    const stream = document.getElementById('stream-scroll'); 
+    const railFill = document.getElementById('rail-progress'); 
     
     if (!stream || !railFill) return;
 
-    // A. Scroll Listener (The Thermometer)
+    // A. The Smart Scroll Listener
     stream.addEventListener('scroll', () => {
-        // Calculate Height
-        const maxScroll = stream.scrollHeight - stream.clientHeight;
-        const scrollPercent = (stream.scrollTop / maxScroll) * 100;
-        railFill.style.height = `${scrollPercent}%`;
+        const isMobile = window.innerWidth <= 1000;
 
-        // Active Year Highlight
-        const centerLine = stream.scrollTop + (stream.clientHeight / 3);
-        document.querySelectorAll('.time-block').forEach(block => {
-            if (centerLine >= block.offsetTop && centerLine <= (block.offsetTop + block.clientHeight)) {
-                block.classList.add('active-year');
-            } else {
-                block.classList.remove('active-year');
-            }
-        });
+        if (isMobile) {
+            // --- HORIZONTAL MATH (Mobile) ---
+            const maxScroll = stream.scrollWidth - stream.clientWidth;
+            const scrollPercent = maxScroll > 0 ? (stream.scrollLeft / maxScroll) * 100 : 0;
+            
+            railFill.style.height = '2px';
+            railFill.style.width = `${scrollPercent}%`;
 
-        // Infinite Loop Glitch (Optional)
-        // If you want it to snap back to top endlessly:
-        /*
-        if (stream.scrollTop >= maxScroll - 2) {
-            stream.scrollTop = 1; // Loop
+            const centerLine = stream.scrollLeft + (stream.clientWidth / 2);
+            document.querySelectorAll('.time-block').forEach(block => {
+                if (centerLine >= block.offsetLeft && centerLine <= (block.offsetLeft + block.clientWidth)) {
+                    block.classList.add('active-year');
+                } else {
+                    block.classList.remove('active-year');
+                }
+            });
+
+        } else {
+            // --- VERTICAL MATH (Desktop) ---
+            const maxScroll = stream.scrollHeight - stream.clientHeight;
+            const scrollPercent = maxScroll > 0 ? (stream.scrollTop / maxScroll) * 100 : 0;
+            
+            railFill.style.width = '2px';
+            railFill.style.height = `${scrollPercent}%`;
+
+            const centerLine = stream.scrollTop + (stream.clientHeight / 3);
+            document.querySelectorAll('.time-block').forEach(block => {
+                if (centerLine >= block.offsetTop && centerLine <= (block.offsetTop + block.clientHeight)) {
+                    block.classList.add('active-year');
+                } else {
+                    block.classList.remove('active-year');
+                }
+            });
         }
-        */
     });
 
-    // B. Auto Drift (Idle Movement)
+    // B. Auto Drift (Supports Touch)
     let isHovering = false;
     stream.addEventListener('mouseenter', () => isHovering = true);
     stream.addEventListener('mouseleave', () => isHovering = false);
+    
+    // Stop drift when a user is touching the screen on mobile
+    stream.addEventListener('touchstart', () => isHovering = true);
+    stream.addEventListener('touchend', () => { setTimeout(() => isHovering = false, 1500); });
 
     if (railDriftInterval) clearInterval(railDriftInterval);
     railDriftInterval = setInterval(() => {
         if (!isHovering) {
-            stream.scrollTop += 1; // Slow drift
+            const isMobile = window.innerWidth <= 1000;
+            
+            if (isMobile) {
+                // Horizontal drift (Stops at the end)
+                const maxScroll = stream.scrollWidth - stream.clientWidth;
+                if (stream.scrollLeft < maxScroll) {
+                    stream.scrollLeft += 1; 
+                }
+            } else {
+                // Vertical drift (Stops at the end)
+                const maxScroll = stream.scrollHeight - stream.clientHeight;
+                if (stream.scrollTop < maxScroll) {
+                    stream.scrollTop += 1;  
+                }
+            }
         }
     }, 40);
+    
+    // Trigger once on load to establish the initial green line
+    stream.dispatchEvent(new Event('scroll'));
 }
-
 
 // 3. MASTER INIT
 document.addEventListener('DOMContentLoaded', () => {

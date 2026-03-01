@@ -16,20 +16,22 @@
     
     /* FILL THE PARENT CONTAINER */
     width: 85%; 
+    max-width: 1400px; /* <--- ADDED: Prevents it from getting absurdly wide on 4K screens */
     height: 100%; 
-    max-height: 700px; /* Ensure it has height if parent collapses */
+    max-height: 700px; 
     
     /* STAY INSIDE THE BOX */
     position: relative; 
-    /* Removed: top/left/transform fixed positioning */
+    margin: 0 auto; /* <--- ADDED: Centers it horizontally */
     
     /* Visuals */
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(0, 136, 255, 0.3);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); /* Reduced shadow spread */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
     border-radius: 12px;
     overflow: hidden;
+    box-sizing: border-box !important; /* <--- ADDED: Crucial safety net */
 }
 
 /* ... (The rest of your CSS for left/right panels remains valid) ... */
@@ -39,6 +41,7 @@
    ========================================================================= */
 .left-panel {
     flex: 2; /* Takes 2/3 Width */
+    min-width: 0;
     position: relative;
     background: #000;
     overflow: hidden;
@@ -199,7 +202,8 @@
 
 /* 1. MASTER STRUCTURE */
 .right-panel {
-    flex: 1; 
+    flex: 0 0 420px; 
+    width: 420px;
     display: flex; flex-direction: column;
     position: relative;
     /* No border properties here */
@@ -228,6 +232,7 @@
 .rail-container {
     flex: 1; display: flex;
     height: 100%; overflow: hidden;
+    box-sizing: border-box !important; /* <--- ADDED */
 }
 
 /* --- ZONE A: THE RAIL (LEFT SPINE) --- */
@@ -284,6 +289,7 @@
     padding-left: 20px; padding-bottom: 60px;
     border-left: 1px dashed rgba(255,255,255,0.05);
     display: flex; flex-direction: column; gap: 40px;
+    box-sizing: border-box !important; /* <--- ADDED */
 }
 .empty-block { padding-bottom: 30px; border-left: none; }
 
@@ -314,10 +320,12 @@
     color: #fff; transform: translateX(5px); text-shadow: 0 0 10px var(--holo-blue);
 }
 
-
-/* 5. HOLO CARDS */
+/* 5. HOLO CARDS (PERFECT THUMBNAIL ALIGNMENT) */
 .holo-card {
-    display: block; width: 100%; max-width: 400px;
+    display: block; 
+    width: 100%; 
+    max-width: 100%; /* CHANGED: Removes the 400px limit so it fills the block */
+    margin: 0 auto;  /* CHANGED: Forces the card to stay dead-center */
     position: relative;
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     cursor: pointer; text-decoration: none;
@@ -325,17 +333,24 @@
 .holo-card:hover { transform: scale(1.03) translateX(10px); z-index: 10; }
 
 .media-box {
-    position: relative; width: 100%; border-radius: 4px; overflow: hidden;
+    position: relative; 
+    width: 100%; 
+    aspect-ratio: 16 / 9; /* CRITICAL: Forces a perfect YouTube cinematic box */
+    border-radius: 8px; 
+    overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     border: 1px solid rgba(0, 136, 255, 0.2);
     background: #000;
+    display: flex; align-items: center; justify-content: center;
 }
 
 .media-content {
-    width: 100%; height: auto; display: block;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* CRITICAL: Crops the image perfectly to fill the box without stretching */
     filter: brightness(0.7) grayscale(0.2); transition: 0.4s;
+    display: block;
 }
-.holo-card:hover .media-content { filter: brightness(1) grayscale(0); }
 
 /* Play Button */
 .play-overlay {
@@ -358,9 +373,14 @@
 .meta-title { color: #ccc; letter-spacing: 0.5px; }
 .holo-card:hover .meta-title { color: white; text-shadow: 0 0 5px #0088ff; }
 
-
 /* 6. TEXT CHIPS (PDF/DOCS) */
-.card-chip { width: 100%; max-width: 400px; }
+.card-chip { 
+    display: block; 
+    width: 100%; 
+    max-width: 100%; /* Matches the image thumbnails perfectly */
+    margin: 0 auto; 
+    text-decoration: none; 
+}
 .chip-glass {
     background: rgba(0, 20, 40, 0.6);
     border: 1px solid rgba(0, 136, 255, 0.2);
@@ -369,6 +389,10 @@
     padding: 15px; border-radius: 2px;
     display: flex; align-items: center; gap: 15px;
     transition: 0.3s;
+    
+    /* CRITICAL FIXES FOR ESCAPING BUTTON: */
+    width: 100%;
+    box-sizing: border-box !important; 
 }
 .holo-card:hover .chip-glass {
     background: rgba(0, 40, 80, 0.8);
@@ -376,14 +400,26 @@
     box-shadow: 0 0 15px rgba(0, 136, 255, 0.2);
 }
 .chip-icon { font-size: 1.5rem; color: #0088ff; }
-.chip-info { display: flex; flex-direction: column; }
+.chip-info { 
+    display: flex; 
+    flex-direction: column; 
+    flex: 1;         /* <--- ADDED: Tells the info box to take only available space */
+    min-width: 0;    /* <--- CRITICAL: Allows the box to shrink smaller than the text */
+}
 .chip-label { font-size: 0.6rem; color: #666; font-family: 'Courier New', monospace; }
-.chip-name { margin: 0; font-family: 'Impact', sans-serif; font-size: 1rem; color: #ddd; letter-spacing: 1px; }
-
+.chip-name { 
+    margin: 0; font-family: 'Impact', sans-serif; font-size: 1rem; color: #ddd; letter-spacing: 1px; 
+    
+    /* <--- ADDED THESE 3 LINES TO HANDLE LONG TEXT: */
+    white-space: nowrap;     
+    overflow: hidden;        
+    text-overflow: ellipsis; 
+}
 .btn-open {
     margin-left: auto; font-size: 0.6rem; color: #0088ff;
     border: 1px solid #0088ff; padding: 5px 10px; text-decoration: none;
     transition: 0.2s;
+    flex-shrink: 0; /* <--- ADDED: Protects the button so it never gets squished */
 }
 .btn-open:hover { background: #0088ff; color: #000; }
 
@@ -397,13 +433,93 @@
 .terminal-line { font-family: 'Courier New', monospace; font-size: 0.7rem; color: #0088ff; margin-bottom: 5px; }
 .dim { opacity: 0.5; }
 
-/* RESPONSIVE */
+/* =========================================================================
+   RESPONSIVE: HORIZONTAL TIMELINE PIVOT (MOBILE)
+   ========================================================================= */
 @media (max-width: 1000px) {
     .holo-wrapper {
         flex-direction: column;
-        height: auto; top: 5%; transform: translateX(-50%);
-        overflow-y: auto;
+        height: auto; 
+        max-height: none; 
+        width: 95vw !important; 
+        max-width: 95vw !important;
+        margin: 20px auto !important; 
     }
-    .left-panel { height: 400px; flex: none; width: 100%; border-right: none; border-bottom: 2px solid var(--holo-blue); }
-    .right-panel { height: 500px; flex: none; width: 100%; }
+    
+    .left-panel { 
+        height: 350px; /* Reduced slightly for mobile */
+        flex: none; width: 100%; 
+        border-right: none; border-bottom: 2px solid var(--holo-blue); 
+    }
+    
+    .right-panel { 
+        height: 360px; /* <--- Sleek, locked height for a single row of cards */
+        flex: none; width: 100%; 
+    }
+
+    /* 1. ROTATE THE RAIL CONTAINER */
+    .rail-container { flex-direction: column; } /* Puts timeline on top, cards below */
+
+    /* 2. HORIZONTAL TIMELINE BAR */
+    .timeline-rail {
+        width: 100%; height: 50px; flex-shrink: 0;
+        border-right: none; 
+    }
+    .rail-track, .rail-fill {
+        width: 100%; height: 2px;
+        top: auto; bottom: 0; left: 0; 
+        transform: none; /* Reset vertical transforms */
+    }
+    .rail-fill { transition: width 0.1s linear; }
+    .rail-fill::after { 
+        bottom: -3px; left: auto; right: -3px; /* Move glowing head to the right tip */
+    }
+
+    /* 3. HORIZONTAL SCROLL STREAM */
+    .stream-scroll-area {
+        overflow-x: auto; overflow-y: hidden;
+        padding: 0 0 20px 0; /* Remove side padding */
+        
+        /* Rotate the fade mask to the left and right edges */
+        mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        display: flex;
+    }
+
+    /* 4. FLIP CONTENT TO A ROW */
+    .stream-content { flex-direction: row; height: 100%; align-items: flex-start; }
+    .spacer-top, .spacer-bottom { width: 40vw; height: 1px; flex-shrink: 0; }
+
+    /* 5. ADJUST TIME BLOCKS & DOTS */
+    .time-block {
+        width: auto; /* <--- Lets the block grow infinitely to the right */
+        padding: 50px 0 0 0; /* Space for the timeline dot on top */
+        border-left: none;
+        display: flex; 
+        flex-direction: row; /* <--- THE MAGIC FLIP: Cards sit side-by-side */
+        flex-shrink: 0;
+        margin-right: 40px; 
+        gap: 20px; 
+    }
+    
+    /* 6. ANCHOR THE YEAR AS A HEADER */
+    .rail-dot-anchor {
+        left: 0; top: 0; /* Puts the dot at the very start of the year's block */
+        transform: none;
+        flex-direction: row; /* Keeps the dot and year side-by-side */
+        align-items: center;
+    }
+    .dot-year { 
+        margin-left: 12px; margin-top: 0; font-size: 1.2rem; 
+    }
+    .time-block.active-year .dot-year { 
+        transform: translateX(5px); /* Animate sideways again */
+    }
+
+    .holo-card, .card-chip { /* <--- Added .card-chip here! */
+        width: 75vw; 
+        max-width: 300px;
+        flex-shrink: 0; 
+        margin: 0; 
+    }
 }

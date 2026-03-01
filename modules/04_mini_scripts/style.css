@@ -1,43 +1,40 @@
-/* MODULE 04: THE CYBER WALL (MAXIMUM WIDTH EDITION) */
+/* MODULE 04: THE CYBER WALL (BULLETPROOF EDITION) */
 
 /* ================================================================= */
-/* 1. CONTAINER: FORCE FULL SIZE */
+/* 1. CONTAINER: FORCE FULL SIZE & SAFE SCALING */
 /* ================================================================= */
 .mini-layout {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 0, 255, 0.3);
-    border-radius: 25px;
+    border-radius: 20px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     
-    /* FORCE EXPANSION */
-    width: 1200px;           /* Fill the parent container completely */
-    max-width: 95%;       /* Remove any artificial limits */
+    /* THE NUKE (Matches Module 03 exactly) */
+    width: 90vw !important; 
+    max-width: 1200px !important; 
+    height: 540px; 
+    margin: 20px auto !important; 
     
-    /* SOLID HEIGHT */
-    height: 540px;         /* Fixed, tall height for desktop */
-    min-height: 540px;     /* Never shrink below this */
-    
-    margin: 0 auto;        /* Center it if parent allows */
     display: flex; 
+    flex-direction: row;
     overflow: hidden; 
     position: relative;
-    box-sizing: border-box;
-    
-    /* STOP SHRINKING */
-    flex-shrink: 0;        /* Do not let parent container squash this */
-    flex-grow: 1;          /* Grow to fill empty space */
+    box-sizing: border-box !important;
+    flex-shrink: 0; 
 }
 
 /* ================================================================= */
 /* 2. LEFT PANEL (GRID): MAIN CONTENT */
 /* ================================================================= */
 .mini-grid-panel {
-    flex: 1;               /* Take all remaining space */
+    flex: 1; 
     padding: 30px;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex; flex-direction: column;
-    min-width: 0; 
+    display: flex; 
+    flex-direction: column;
+    min-width: 0 !important; /* CRITICAL: Stops grid from blowing out */
+    box-sizing: border-box !important; /* CRITICAL: Keeps padding inside */
 }
 
 .mini-header {
@@ -52,7 +49,6 @@
 /* GRID LOGIC */
 .constructs-grid {
     display: grid;
-    /* Fill width efficiently with 110px bricks */
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
     gap: 10px; 
     overflow-y: auto;
@@ -63,7 +59,7 @@
 
 /* BRICK STYLING */
 .brick {
-    height: 65px; /* Taller bricks for better visibility */
+    height: 65px; 
     background: rgba(255, 255, 255, 0.03); 
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
@@ -95,16 +91,14 @@
 /* 3. RIGHT PANEL (INSPECTOR): FIXED WIDTH */
 /* ================================================================= */
 .mini-inspector-panel {
-    /* Fixed width ensures details don't get crushed */
     flex: 0 0 420px; 
-    width: 420px;
-    
+    max-width: 45%; /* Ensures inspector doesn't eat the whole screen on medium desktops */
     background: rgba(0, 0, 0, 0.6);
     padding: 30px;
     position: relative;
     display: flex; flex-direction: column;
     border-left: 1px solid rgba(255,0,255,0.1);
-    transition: width 0.2s;
+    box-sizing: border-box !important; /* CRITICAL */
 }
 
 .inspector-placeholder, .trap-message { 
@@ -117,7 +111,6 @@
 .trap-message i { font-size: 4rem; margin-bottom: 20px; }
 
 .script-detail { display: flex; flex-direction: column; height: 100%; animation: fadeIn 0.3s ease forwards; }
-@keyframes fadeIn { to { opacity: 1; } }
 
 .detail-header { border-bottom: 1px dashed #444; padding-bottom: 15px; margin-bottom: 15px; }
 .detail-header h2 { color: white; font-size: 1.6rem; margin-bottom: 5px; line-height: 1.2; }
@@ -141,38 +134,36 @@
 
 
 /* ================================================================= */
-/* 4. RESPONSIVE BREAKPOINTS */
+/* 4. RESPONSIVE BREAKPOINTS (MATCHING MODULE 03) */
 /* ================================================================= */
-
-/* Laptop: Squeeze the Inspector slightly */
-
-
-/* Mobile: Full Stack */
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
     .mini-layout { 
-        flex-direction: column; 
-        height: auto; 
-        min-height: 700px;
-        width:auto !important; 
-        max-width: 100% !important; 
-        margin: 0; padding: 0;
-        border: none; border-top: 1px solid #FF00FF; border-bottom: 1px solid #FF00FF;
-        border-radius: 0;
+        flex-direction: column !important; 
+        height: auto !important; 
+        min-height: auto !important; 
+        
+        /* Force 90vw width so the pink border is always visible! */
+        width: 90vw !important; 
+        max-width: 90vw !important; 
+        margin: 20px auto !important;
+        border-radius: 15px !important; 
     }
 
     .mini-grid-panel { 
         border-right: none; 
-        border-bottom: 1px solid #333; 
-        height: 400px; 
+        border-bottom: 1px solid rgba(255,0,255,0.2); 
+        height: 350px; /* Gives the grid enough space to scroll vertically */
         flex: none; 
-        padding: 15px;
+        padding: 20px;
     }
 
     .mini-inspector-panel { 
-        width: 100%; 
+        width: 100% !important; 
+        max-width: 100% !important;
         height: auto; 
         min-height: 300px;
         padding: 20px; 
+        border-left: none;
         flex: auto;
     }
 }
