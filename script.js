@@ -19,7 +19,7 @@ const SECTOR_MAP = {
 // ==========================================
 // 2. ASSET MANIFEST
 // ==========================================
-const starObjects = { greetings: [], tech: [], ambient: [] };
+const starObjects = { greetings: [], tech: {}, ambient: [] };
 
 const greetingPaths = [
     'assets/icons/greetings/arabic.svg', 'assets/icons/greetings/chinese.svg',
@@ -116,7 +116,8 @@ class Star {
         // 1. GREETINGS
         if (this.type === 'greeting') {
             this.angle = index * ((Math.PI * 2) / 8); 
-            this.orbitRadius = 1920; 
+            const isMobile = window.innerWidth <= 768;
+                this.orbitRadius = isMobile ? 600 : 1920; 
             this.obj = starObjects.greetings[index % starObjects.greetings.length];
         } 
         // 2. AMBIENT
@@ -153,10 +154,12 @@ class Star {
 
     draw() {
         let size = 0, opacity = 0, x = 0, y = 0;
+        const isMobile = window.innerWidth <= 768;
         
         if (cameraZoom > 2) { // INTRO MODE
             if(this.type === 'greeting') {
-                size = 240; opacity = (cameraZoom - 2) / 2;
+                size = isMobile ? 120 : 240; 
+                opacity = (cameraZoom - 2) / 2;
                 x = centerX + Math.cos(this.angle) * this.orbitRadius * (1/cameraZoom);
                 y = centerY + Math.sin(this.angle) * this.orbitRadius * 0.4 * (1/cameraZoom);
             }
@@ -213,9 +216,11 @@ class Star {
 // 5. SUN (Enhanced Code)
 // ==========================================
 function drawSun() {
-    let baseRadius = 130 * (cameraZoom > 1 ? cameraZoom * 0.5 : 1);
+const isMobile = window.innerWidth <= 768;
+    let baseRadius = (isMobile ? 45 : 130) * (cameraZoom > 1 ? cameraZoom * 0.5 : 1);
+    
     sunPulse += 0.005; 
-    let sunY = centerY; 
+    let sunY = centerY;
 
     ctx.save();
     ctx.globalCompositeOperation = 'screen'; 
@@ -269,11 +274,18 @@ function drawSun() {
         ctx.save();
         ctx.globalAlpha = (cameraZoom - 3) / 2; 
         ctx.fillStyle = "white";
-        ctx.font = "bold 28px 'Courier New', serif"; 
+        
+        // CRITICAL SHRINK: Smaller, cleaner font size on mobile
+        let fontSize = isMobile ? 16 : 28;
+        ctx.font = `bold ${fontSize}px 'Courier New', serif`; 
+        
         ctx.textAlign = "center";
         ctx.shadowColor = "black";
         ctx.shadowBlur = 8;
-        ctx.fillText("CLICK TO ENTER", centerX, sunY + 10);
+        
+        // Adjust the Y offset so it sits closer to the smaller sun
+        let textOffset = isMobile ? 5 : 10;
+        ctx.fillText("CLICK TO ENTER", centerX, sunY + textOffset);
         ctx.restore();
     }
 }
@@ -323,22 +335,43 @@ function animate() {
 }
 
 // D. Init
+// ==========================================
+// MASTER INIT & MODULE LOADER (BULLETPROOF)
+// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Load All Modules
-    loadModule('bio-container', 'modules/02_profile_bio/view.html');
-    loadModule('experience-container', 'modules/02b_experience/view.html'); // NEW
-    loadModule('projects-container', 'modules/03_projects_main/view.html'); 
-    loadModule('mini-container', 'modules/04_mini_scripts/view.html');
-    loadModule('certs-container', 'modules/05_certifications/view.html');
-    loadModule('holo-console-container', 'modules/06_holo_console/view.html');
-    loadModule('recs-container', 'modules/07_recs_rail/view.html');
-    loadModule('transmission-container', 'modules/08_transmission/view.html');
-    // 2. Start Observers
-    document.querySelectorAll('.step-section').forEach(s => observer.observe(s));
     
-    // 3. Start Experience Trigger
-    const expSection = document.getElementById('experience');
-    if(expSection) experienceObserver.observe(expSection);
+    // 1. Load basic modules
+    loadModule('bio-container', 'modules/02_profile_bio/view.html');
+    loadModule('experience-container', 'modules/02b_experience/view.html').then(() => {
+        const expSection = document.getElementById('experience');
+        if(expSection) experienceObserver.observe(expSection);
+    });
+    loadModule('projects-container', 'modules/03_projects_main/view.html'); 
+    loadModule('certs-container', 'modules/05_certifications/view.html');
+    loadModule('recs-container', 'modules/07_recs_rail/view.html').then(() => {
+        if (typeof initRecsRail === "function") initRecsRail();
+    });
+    loadModule('transmission-container', 'modules/08_transmission/view.html');
+
+    // 2. Load Mini Scripts (Cyber Wall) & Trigger Shuffle instantly after load
+    loadModule('mini-container', 'modules/04_mini_scripts/view.html').then(() => {
+        shuffleBricks();
+    });
+
+    // 3. Load Holo Console & Trigger Engine instantly after load
+    loadModule('holo-console-container', 'modules/06_holo_console/view.html').then(() => {
+        console.log("SYSTEM: AR Chrono-Deck Loaded.");
+        startAutoSlide();
+        const deck = document.getElementById('visual-deck');
+        if(deck) {
+            deck.addEventListener('mouseenter', stopAutoSlide);
+            deck.addEventListener('mouseleave', startAutoSlide);
+        }
+        initRailEngine(); // No more guessing with setTimeout!
+    });
+
+    // 4. Start Observers
+    document.querySelectorAll('.step-section').forEach(s => observer.observe(s));
 });
 
 // ==========================================

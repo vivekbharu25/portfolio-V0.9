@@ -1,126 +1,3 @@
-/* =========================================
-   THE SACRED TIMELINE CONSOLE
-   ========================================= */
-
-/* 1. THE WRAPPER */
-.tva-wrapper {
-    display: flex;
-    width: 98%; max-width: 1800px;
-    height: 700px; /* Tall enough for the timeline */
-    
-    /* Global Console Look */
-    background: rgba(10, 5, 5, 0.95);
-    border: 1px solid #500000; /* Dark Red Stark Border */
-    box-shadow: 0 0 50px rgba(80, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-}
-
-/* 2. THE COLUMNS (Left & Right) */
-.console-col {
-    flex: 1; /* Take up 50% each */
-    position: relative;
-    overflow: hidden; /* Contain the inner modules */
-}
-
-
-/* =========================================
-   3. THE LOKI SPINE (Vertical Separator)
-   ========================================= */
-.loki-spine {
-    width: 80px; /* Width of the timeline strip */
-    height: 100%;
-    background: #050505;
-    border-left: 2px solid #800000;
-    border-right: 2px solid #800000;
-    position: relative;
-    display: flex; justify-content: center;
-    z-index: 10;
-}
-
-/* The Glowing Green Line */
-.spine-line {
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 2px;
-    background: #00FF41; /* TVA Green */
-    box-shadow: 0 0 15px #00FF41, 0 0 30px #00FF41;
-    opacity: 0.8;
-}
-
-/* Time Nodes */
-.time-node {
-    position: absolute; left: 50%; transform: translateX(-50%);
-    cursor: pointer;
-    width: 40px; height: 40px; /* Hitbox */
-    display: flex; align-items: center; justify-content: center;
-}
-
-/* The Diamond Rune */
-.rune-diamond {
-    width: 12px; height: 12px;
-    background: #111;
-    border: 2px solid #C5A000; /* Muted Gold */
-    transform: rotate(45deg);
-    transition: 0.3s;
-    position: relative; z-index: 2;
-}
-
-/* The Date Text */
-.rune-date {
-    position: absolute; left: 30px; /* Push to right of diamond */
-    font-family: 'Cinzel', serif; /* Magical/Ancient Font */
-    color: #C5A000;
-    font-size: 0.8rem; font-weight: bold;
-    opacity: 0.5; transition: 0.3s;
-    pointer-events: none;
-}
-
-/* POPUP (Hidden Info) */
-.variant-popup {
-    position: absolute;
-    left: -160px; /* Pop to the Left */
-    width: 140px;
-    background: rgba(0, 20, 0, 0.95);
-    border: 1px solid #00FF41;
-    padding: 10px;
-    text-align: right;
-    
-    opacity: 0; transform: translateX(20px);
-    transition: 0.3s;
-    pointer-events: none;
-    z-index: 20;
-}
-.variant-popup strong { display: block; color: #00FF41; font-size: 0.7rem; letter-spacing: 1px; }
-.variant-popup small { color: #aaa; font-size: 0.65rem; }
-
-/* --- INTERACTION --- */
-.time-node:hover .rune-diamond { 
-    background: #00FF41; box-shadow: 0 0 15px #00FF41; border-color: white; 
-}
-.time-node:hover .rune-date { opacity: 1; color: #00FF41; }
-.time-node:hover .variant-popup { opacity: 1; transform: translateX(0); }
-
-/* CURRENT NODE (Active) */
-.time-node.current .rune-diamond {
-    background: #C5A000; box-shadow: 0 0 20px #C5A000;
-    animation: runePulse 2s infinite;
-}
-@keyframes runePulse { 0% { box-shadow: 0 0 10px #C5A000; } 50% { box-shadow: 0 0 25px #C5A000; } 100% { box-shadow: 0 0 10px #C5A000; } }
-
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-    .tva-wrapper { flex-direction: column; height: auto; }
-    .loki-spine { 
-        width: 100%; height: 80px; 
-        border-left: none; border-right: none; border-top: 2px solid #800000; border-bottom: 2px solid #800000;
-        flex-direction: row; align-items: center;
-    }
-    .spine-line { width: 100%; height: 2px; top: 50%; }
-    .time-node { top: 50% !important; transform: translateY(-50%); position: relative; left: auto; margin: 0 20px; }
-    .variant-popup { top: 40px; left: 50%; transform: translateX(-50%); text-align: center; }
-}
 
 /* ==========================================
    GLOBAL SYSTEM WATERMARK (HUD)
@@ -280,7 +157,7 @@ body {
 }
 
 /* LOCK/UNLOCK STATES */
-body.locked { overflow: hidden; height: 100vh; }
+body.locked { overflow: hidden; height: 100vh; height: 100dvh; }
 body.unlocked {
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -291,8 +168,8 @@ body.unlocked {
 }
 
 /* GALAXY LAYERS */
-#galaxy-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
-#intro-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; cursor: pointer; }
+#galaxy-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;height: 100dvh; z-index: -1; }
+#intro-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; cursor: pointer; -webkit-tap-highlight-color: transparent;}
 #transition-flash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; opacity: 0; pointer-events: none; z-index: 9999; }
 .flash-bang { animation: flashAnim 1.5s ease-out forwards; }
 @keyframes flashAnim { 0% { opacity: 0; } 15% { opacity: 1; } 100% { opacity: 0; } }
